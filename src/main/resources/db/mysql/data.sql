@@ -15,12 +15,12 @@ INSERT IGNORE INTO vet_specialties VALUES (3, 3);
 INSERT IGNORE INTO vet_specialties VALUES (4, 2);
 INSERT IGNORE INTO vet_specialties VALUES (5, 1);
 
-INSERT IGNORE INTO types VALUES (1, 'cat');
-INSERT IGNORE INTO types VALUES (2, 'dog');
-INSERT IGNORE INTO types VALUES (3, 'lizard');
-INSERT IGNORE INTO types VALUES (4, 'snake');
-INSERT IGNORE INTO types VALUES (5, 'bird');
-INSERT IGNORE INTO types VALUES (6, 'hamster');
+INSERT IGNORE INTO assignments VALUES (1, 'cat');
+INSERT IGNORE INTO assignments VALUES (2, 'dog');
+INSERT IGNORE INTO assignments VALUES (3, 'lizard');
+INSERT IGNORE INTO assignments VALUES (4, 'snake');
+INSERT IGNORE INTO assignments VALUES (5, 'bird');
+INSERT IGNORE INTO assignments VALUES (6, 'hamster');
 
 INSERT IGNORE INTO students VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023');
 INSERT IGNORE INTO students VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749');

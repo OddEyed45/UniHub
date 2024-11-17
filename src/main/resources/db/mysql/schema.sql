@@ -19,12 +19,6 @@ CREATE TABLE IF NOT EXISTS vet_specialties (
   UNIQUE (vet_id,specialty_id)
 ) engine=InnoDB;
 
-CREATE TABLE IF NOT EXISTS assignments (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(80),
-  INDEX(name)
-) engine=InnoDB;
-
 CREATE TABLE IF NOT EXISTS students (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30),
@@ -32,17 +26,35 @@ CREATE TABLE IF NOT EXISTS students (
   email VARCHAR(255),
   telephone VARCHAR(20),
   INDEX(last_name)
+  FOREIGN KEY (courses_id) REFERENCES courses(id),
+  FOREIGN KEY (notes_id) REFERENCES notes(id),
+  FOREIGN KEY (assignments_id) REFERENCES assignments(id),
 ) engine=InnoDB;
 
 CREATE TABLE IF NOT EXISTS courses (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30),
-  type_id INT(4) UNSIGNED NOT NULL,
+  professor VARCHAR(30),
+  time VARCHAR(30),
+  location VARCHAR(30),
   students_id INT(4) UNSIGNED,
   INDEX(name),
   FOREIGN KEY (students_id) REFERENCES students(id),
-  FOREIGN KEY (type_id) REFERENCES types(id)
 ) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS notes (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(80),
+  date DATE,
+  notes VARCHAR(500),
+  INDEX(name)
+  ) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS assignments (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(80),
+  INDEX(name)
+  ) engine=InnoDB;
 
 CREATE TABLE IF NOT EXISTS visits (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
