@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'students')}">
+
+<body>
+
+
+<h2>Owner Information</h2>
+
+<div th:if="${message}" class="alert alert-success" id="success-message">
+  <span th:text="${message}"></span>
+</div>
+
+<div th:if="${error}" class="alert alert-danger" id="error-message">
+  <span th:text="${error}"></span>
+</div>
+
+
+
+
+<table class="table table-striped" th:object="${student}">
+  <tr>
+    <th>Name</th>
+    <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td th:text="*{email}"></td>
+  </tr>
+  <tr>
+    <th>Telephone</th>
+    <td th:text="*{telephone}"></td>
+  </tr>
+</table>
+
+<a th:href="@{__${student.id}__/edit}" class="btn btn-primary">Edit
+  Student</a>
+<a th:href="@{__${student.id}__/courses/new}" class="btn btn-primary">Add
+  New Course</a>
+<a th:href="@{__${student.id}__/notes/new}" class="btn btn-primary">Add
+  New Note</a>
+<a th:href="@{__${student.id}__/assignments/new}" class="btn btn-primary">Add
+  New Assignment</a>
+
+<br />
+<br />
+<br />
+<h2>Classes</h2>
+
+<table class="table table-striped">
+
+  <tr th:each="course : ${student.courses}">
+    <td valign="top">
+      <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd th:text="${course.course_name}"></dd>
+        <dt>Professor</dt>
+        <dd th:text="${course.course_name}"></dd>
+        <dt>Location</dt>
+        <dd th:text="${course.course_name}"></dd>
+        <dt>Time</dt>
+        <dd th:text="${course.course_name}"></dd>
+      </dl>
+    </td>
+    <td valign="top">
+      <table class="table-condensed">
+        <thead>
+        <tr></tr>
+        <th>Description</th>
+        </thead>
+        <tr>
+          <td><a th:href="@{__${student.id}__/courses/__${course.id}__/edit}">Edit Course</a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<br />
+<br />
+<br />
+<h2>Classes</h2>
+
+<table class="table table-striped">
+
+  <tr th:each="course : ${student.courses}">
+    <td valign="top">
+      <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd th:text="${course.course_name}"></dd>
+        <dt>Professor</dt>
+        <dd th:text="${course.prof_name}"></dd>
+        <dt>Location</dt>
+        <dd th:text="${course.location}"></dd>
+        <dt>Time</dt>
+        <dd th:text="${course.time}"></dd>
+      </dl>
+    </td>
+    <td valign="top">
+      <table class="table-condensed">
+        <thead>
+        <tr></tr>
+        <th>Description</th>
+        </thead>
+  </tr>
+  <tr>
+    <td><a th:href="@{__${student.id}__/courses/__${course.id}__/edit}">Edit Course</a></td>
+  </tr>
+</table>
+</td>
+</tr>
+
+</table>
+
+<br />
+<br />
+<br />
+<h2>Assignments</h2>
+
+<table class="table table-striped">
+
+  <tr th:each="course : ${student.assignments}">
+    <td valign="top">
+      <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd th:text="${assignments.name}"></dd>
+        <dt>Due Date</dt>
+        <dd th:text="${assignments.due_date}"></dd>
+        <dt>Category</dt>
+        <dd th:text="${assignments.category}"></dd>
+        <dt>Status</dt>
+        <dd th:text="${assignments.status}"></dd>
+      </dl>
+    </td>
+    <td valign="top">
+      <table class="table-condensed">
+        <thead>
+        <tr></tr>
+        <th>Description</th>
+        </thead>
+        <tr>
+          <td><a th:href="@{__${student.id}__/assignments/__${assignment.id}__/edit}">Edit Assignment</a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+
+<br />
+<br />
+<br />
+<h2>Notes</h2>
+
+<table class="table table-striped">
+
+  <tr th:each="course : ${student.notes}">
+    <td valign="top">
+      <dl class="dl-horizontal">
+        <dt>Lecture</dt>
+        <dd th:text="${notes.class}"></dd>
+        <dt>Date</dt>
+        <dd th:text="${notes.date}"></dd>
+        <dt>Notes</dt>
+        <dd th:text="${notes.notes}"></dd>
+      </dl>
+    </td>
+    <td valign="top">
+      <table class="table-condensed">
+        <thead>
+        <tr></tr>
+        <th>Description</th>
+        </thead>
+        <tr>
+          <td><a th:href="@{__${student.id}__/notes/__${notes.id}__/edit}">Edit Notes</a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+
+<script>
+  // Function to hide the success and error messages after 3 seconds
+  function hideMessages() {
+    setTimeout(function() {
+      document.getElementById("success-message").style.display = "none";
+      document.getElementById("error-message").style.display = "none";
+    }, 3000); // 3000 milliseconds (3 seconds)
+  }
+
+  // Call the function to hide messages
+  hideMessages();
+</script>
+
+</body>
+
+
+</html>
+
