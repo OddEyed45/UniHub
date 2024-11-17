@@ -25,6 +25,9 @@ CREATE TABLE IF NOT EXISTS students (
   last_name VARCHAR(30),
   email VARCHAR(255),
   telephone VARCHAR(20),
+  courses_id INT(4) UNSIGNED,
+  notes_id INT(4) UNSIGNED,
+  assignments_id INT(4) UNSIGNED,
   INDEX(last_name)
   FOREIGN KEY (courses_id) REFERENCES courses(id),
   FOREIGN KEY (notes_id) REFERENCES notes(id),
@@ -35,11 +38,9 @@ CREATE TABLE IF NOT EXISTS courses (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30),
   professor VARCHAR(30),
-  time VARCHAR(30),
   location VARCHAR(30),
-  students_id INT(4) UNSIGNED,
+  time VARCHAR(30),
   INDEX(name),
-  FOREIGN KEY (students_id) REFERENCES students(id),
 ) engine=InnoDB;
 
 CREATE TABLE IF NOT EXISTS notes (
@@ -53,6 +54,9 @@ CREATE TABLE IF NOT EXISTS notes (
 CREATE TABLE IF NOT EXISTS assignments (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(80),
+  duedate DATE,
+  category VARCHAR(80),
+  status VARCHAR(80),
   INDEX(name)
   ) engine=InnoDB;
 
